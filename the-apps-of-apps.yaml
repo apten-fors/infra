@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: apps-xavier
+  name: the-app-of-apps
   namespace: argocd
 spec:
   destination:
     server: 'https://kubernetes.default.svc'
-  project: management
+  project: default
   source:
-    path: apps/xavier
-    repoURL: https://github.com/apten-fors/infra.git
+    path: apps-of-apps/
+    repoURL: 'https://github.com/apten-fors/infra.git'
     targetRevision: HEAD
     directory:
       recurse: true
