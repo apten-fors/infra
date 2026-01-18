@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: envoy-gateway
   namespace: argocd
 spec:
   destination:
-    namespace: 'cert-manager'
+    namespace: 'envoy-gateway-system'
     server: 'https://kubernetes.default.svc'
   sources:
-    - repoURL: 'oci://quay.io/jetstack/charts'
-      targetRevision: v1.19.2
-      chart: cert-manager
+    - repoURL: 'docker.io/envoyproxy/gateway-helm'
+      targetRevision: v1.6.2
+      chart: envoy-gateway
   project: xavier
   syncPolicy:
     automated:

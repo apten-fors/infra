@@ -8,7 +8,7 @@ spec:
     namespace: 'cert-manager'
     server: 'https://kubernetes.default.svc'
   sources:
-    - repoURL: 'oci://quay.io/jetstack/charts'
+    - repoURL: 'quay.io/jetstack/charts'
       targetRevision: v1.19.2
       chart: cert-manager
   project: xavier
