@@ -1,0 +1,14 @@
+# Strategic merge patch for Vault unseal configuration
+apiVersion: vault.banzaicloud.com/v1alpha1
+kind: Vault
+metadata:
+  name: vault
+spec:
+  unsealConfig:
+    kubernetes:
+      secretNamespace: vault
+    options:
+      preFlightChecks: true
+      storeRootToken: true
+      secretShares: 5
+      secretThreshold: 3

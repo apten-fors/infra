@@ -1,0 +1,46 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: vault
+
+resources:
+  - base
+
+patches:
+  - path: patches/vault-config.yaml
+  - path: patches/vault-unseal.yaml
+  - path: patches/vault-storage.yaml
+  - path: patches/vault-init-containers.yaml
+
+# Remove unnecessary fields from base CR
+patchesJson6902:
+  - target:
+      group: vault.banzaicloud.com
+      version: v1alpha1
+      kind: Vault
+      name: vault
+    patch: |-
+      - op: remove
+        path: /spec/resources
+      - op: remove
+        path: /spec/annotations
+      - op: remove
+        path: /spec/vaultAnnotations
+      - op: remove
+        path: /spec/vaultConfigurerAnnotations
+      - op: remove
+        path: /spec/vaultLabels
+      - op: remove
+        path: /spec/vaultConfigurerLabels
+      - op: remove
+        path: /spec/veleroEnabled
+      - op: remove
+        path: /spec/caNamespaces
+      - op: remove
+        path: /spec/externalConfig
+      - op: remove
+        path: /spec/vaultEnvsConfig
+      - op: remove
+        path: /spec/statsdDisabled
+      - op: remove
+        path: /spec/serviceRegistrationEnabled

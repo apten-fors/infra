@@ -1,0 +1,17 @@
+# Strategic merge patch for Vault init containers
+apiVersion: vault.banzaicloud.com/v1alpha1
+kind: Vault
+metadata:
+  name: vault
+spec:
+  vaultInitContainers:
+    - name: raft-permission
+      image: busybox
+      command:
+        - /bin/sh
+        - -c
+        - |
+          chown -R 100:1000 /vault/file
+      volumeMounts:
+        - name: vault-raft
+          mountPath: /vault/file

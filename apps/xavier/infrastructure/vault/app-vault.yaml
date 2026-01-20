@@ -8,44 +8,9 @@ spec:
     namespace: 'vault'
     server: https://kubernetes.default.svc
   source:
-    chart: vault
-    repoURL: 'setup-later'
-    targetRevision: v1.1.1
-    helm:
-      valueFiles:
-        - values.yaml
-        - values-common.yaml
-      valuesObject:
-        vault:
-          serviceAccount: vault
-          unsealConfig:
-            kubernetes:
-              secretNamespace: vault
-          resources:
-            vault:
-              limits:
-                memory: "512Mi"
-                cpu: "200m"
-              requests:
-                memory: "256Mi"
-                cpu: "100m"
-          tolerations:
-            - effect: NoSchedule
-              key: node-role.kubernetes.io/worker-infra
-          nodeSelector:
-            node-role.kubernetes.io/worker-infra: ""
-          ingress:
-            spec:
-              ingressClassName: nginx-external
-      parameters:
-        - name: vault.volumeClaimTemplates[0].spec.storageClassName
-          value: dummy-storage-class # CHANGE ME TO YOUR OWN STORAGE CLASS
-        - name: vault.ingress.spec.rules[0].host
-          value: "vault.example.com" # CHANGE ME TO YOUR OWN DOMAIN
-        - name: vault.ingress.spec.rules[0].http.paths[0].backend.service.name
-          value: "vault"
-        - name: vault.ingress.spec.tls[0].hosts[0]
-          value: "vault.example.com" # CHANGE ME TO YOUR OWN DOMAIN
+    repoURL: 'https://github.com/apten-fors/infra.git'
+    targetRevision: HEAD
+    path: static/vault
   project: default
   syncPolicy:
     automated:
