@@ -10,5 +10,5 @@ spec:
     options:
       preFlightChecks: true
       storeRootToken: true
-      secretShares: 5
-      secretThreshold: 3
+      secretShares: 1
+      secretThreshold: 1
