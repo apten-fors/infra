@@ -8,7 +8,7 @@ spec:
     namespace: 'dragonfly-operator'
     server: 'https://kubernetes.default.svc'
   sources:
-    - repoURL: 'ghcr.io/dragonflydb/dragonfly/helm'
+    - repoURL: 'ghcr.io/dragonflydb/dragonfly-operator/helm'
       targetRevision: v1.3.1
       chart: dragonfly-operator
   project: xavier

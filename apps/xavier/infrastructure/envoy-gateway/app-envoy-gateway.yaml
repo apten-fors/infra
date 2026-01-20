@@ -8,9 +8,9 @@ spec:
     namespace: 'envoy-gateway-system'
     server: 'https://kubernetes.default.svc'
   sources:
-    - repoURL: 'docker.io/envoyproxy/gateway-helm'
+    - repoURL: 'docker.io/envoyproxy'
       targetRevision: v1.6.2
-      chart: envoy-gateway
+      chart: gateway-helm
   project: xavier
   syncPolicy:
     automated:
