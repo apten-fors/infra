@@ -11,6 +11,9 @@ spec:
     - repoURL: 'docker.io/envoyproxy'
       targetRevision: v1.6.2
       chart: gateway-helm
+      helm:
+        valueFiles:
+          - values.yaml
   project: xavier
   syncPolicy:
     automated:
