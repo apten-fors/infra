@@ -11,6 +11,10 @@ spec:
     - repoURL: 'https://kubernetes-sigs.github.io/metrics-server/'
       targetRevision: 3.13.0
       chart: metrics-server
+      helm:
+        valuesObject:
+          args:
+          - --kubelet-insecure-tls
   project: xavier
   syncPolicy:
     automated:
