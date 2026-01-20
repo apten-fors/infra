@@ -11,6 +11,7 @@ patches:
   - path: patches/vault-unseal.yaml
   - path: patches/vault-storage.yaml
   - path: patches/vault-init-containers.yaml
+  - path: patches/vault-size.yaml
 
 # Remove unnecessary fields from base CR
 patchesJson6902:
