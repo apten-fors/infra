@@ -19,7 +19,6 @@ env:
 
 envFromSecrets:
   - tgbot-secret-channel
-  - tgbot-secrets
   - tgbot-ig-cookies
 
 configMap:

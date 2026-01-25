@@ -1,7 +1,7 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ClusterSecretStore
 metadata:
-  name: vault-sync-rw
+  name: eso-ro
 spec:
   provider:
     vault:
@@ -12,10 +12,10 @@ spec:
         appRole:
           path: "approle"
           roleRef:
-            name: "vault-approle-secret"
+            name: "eso-ro"
             namespace: "external-secrets"
             key: "role_id"
           secretRef:
-            name: "vault-approle-secret"
+            name: "eso-ro"
             namespace: "external-secrets"
             key: "secret_id"

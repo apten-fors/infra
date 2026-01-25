@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-secrets
+  namespace: argocd
+spec:
+  destination:
+    namespace: 'external-secrets'
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - repoURL: 'https://github.com/apten-fors/infra.git'
+      targetRevision: HEAD
+      path: secrets/xavier/common
+  project: xavier
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
