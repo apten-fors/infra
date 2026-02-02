@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aptenbot
+  name: aptenbot-vip
   namespace: argocd
 spec:
   destination:
@@ -11,6 +11,15 @@ spec:
     - repoURL: 'registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/aptenbot/charts'
       chart: aptenbot
       targetRevision: v0.8.0-dev1
+      helm:
+        valueFiles:
+          - $values/static/xavier/aptenbot/values-aptenbot-vip.yaml
+    - repoURL: 'https://github.com/apten-fors/infra.git'
+      targetRevision: HEAD
+      ref: values
+    - repoURL: 'https://github.com/apten-fors/infra.git'
+      targetRevision: HEAD
+      path: secrets/xavier/aptenbot-vip/
   project: default
   syncPolicy:
     automated:
