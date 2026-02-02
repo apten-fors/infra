@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aptenbot
+  namespace: argocd
+spec:
+  destination:
+    namespace: 'aptenbot'
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - repoURL: 'registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/aptenbot/charts'
+      chart: aptenbot
+      targetRevision: v0.8.0-dev1
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
