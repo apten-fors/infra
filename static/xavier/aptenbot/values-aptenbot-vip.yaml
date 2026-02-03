@@ -15,10 +15,10 @@ env:
   ANTHROPIC_ALLOWED_MODELS: "claude-sonnet-4-20250514, claude-3-7-sonnet-20250219"
   DEFAULT_MODEL_PROVIDER: "openai"
   LOG_LEVEL: "debug"
-  REDIS_SENTINEL_HOSTS: "rfs-redisfailover:26379"
+  REDIS_URL: "redis://dragonfly.aptenbot.svc.cluster.local:6379"
 
 envFromSecrets:
-  - tgbot-secrets
+  - tgbot-secrets-vip
   - tgbot-ig-cookies
 
 configMap:
