@@ -1,8 +1,8 @@
 nameOverride: aptenbot-vip
-replicaCount: 0
+replicaCount: 1
 image:
   repository: registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/aptenbot
-  tag: "v0.7.0"
+  tag: "v0.8.0-dev2"
   pullPolicy: IfNotPresent
 
 imagePullSecrets:

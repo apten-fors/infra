@@ -10,7 +10,7 @@ spec:
   sources:
     - repoURL: 'registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/charts'
       chart: aptenbot
-      targetRevision: 0.8.0-dev1
+      targetRevision: 0.8.0-dev2
       helm:
         valueFiles:
           - $values/static/xavier/aptenbot/values-aptenbot-vip.yaml
