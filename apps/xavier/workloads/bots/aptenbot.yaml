@@ -17,6 +17,9 @@ spec:
     - repoURL: 'https://github.com/apten-fors/infra.git'
       targetRevision: HEAD
       ref: values
+    - repoURL: 'https://github.com/apten-fors/infra.git'
+      targetRevision: HEAD
+      path: secrets/xavier/aptenbot/
   project: default
   syncPolicy:
     automated:
