@@ -8,9 +8,9 @@ spec:
     namespace: 'aptenbot'
     server: 'https://kubernetes.default.svc'
   sources:
-    - repoURL: 'registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/aptenbot/charts'
+    - repoURL: 'registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/charts'
       chart: aptenbot
-      targetRevision: v0.8.0
+      targetRevision: 0.8.0-dev2
       helm:
         valueFiles:
           - $values/static/xavier/aptenbot/values-aptenbot.yaml
