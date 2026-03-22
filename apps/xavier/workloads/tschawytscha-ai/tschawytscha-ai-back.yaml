@@ -1,25 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aptenbot
+  name: tschawytscha-ai-back
   namespace: argocd
 spec:
   destination:
-    namespace: 'aptenbot'
+    namespace: 'tschawytscha-ai'
     server: 'https://kubernetes.default.svc'
   sources:
     - repoURL: 'registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/charts'
-      chart: aptenbot
-      targetRevision: 0.8.0-dev2
+      chart: tschawytscha-ai-back
+      targetRevision: 0.1.2
       helm:
         valueFiles:
-          - $values/static/xavier/aptenbot/values-aptenbot.yaml
+          - $values/static/xavier/tschawytscha-ai/values-tschawytscha-ai-back.yaml
     - repoURL: 'https://github.com/apten-fors/infra.git'
       targetRevision: HEAD
       ref: values
     - repoURL: 'https://github.com/apten-fors/infra.git'
       targetRevision: HEAD
-      path: secrets/xavier/aptenbot/
+      path: secrets/xavier/tschawytscha-ai/
   project: default
   syncPolicy:
     automated:

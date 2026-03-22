@@ -1,0 +1,30 @@
+image:
+  repository: registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/tschawytscha-ai-back
+  tag: "v0.1.2"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: gcore-registry-secret
+
+# Service configuration
+service:
+  port: 80
+  targetPort: 8080
+
+# Secrets (injected via envFrom)
+secrets:
+  - openai-secret
+  - jwt-secret
+
+# Environment variables
+env:
+  OPENAI_MODEL: "gpt-5.4-nano"
+
+# Resources
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
