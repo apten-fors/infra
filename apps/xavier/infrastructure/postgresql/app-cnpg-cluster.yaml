@@ -1,0 +1,62 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg-cluster
+  namespace: argocd
+spec:
+  destination:
+    namespace: 'cnpg-cluster'
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - repoURL: 'https://cloudnative-pg.github.io/charts'
+      targetRevision: 0.6.0
+      chart: cluster
+      helm:
+        valuesObject:
+          type: postgresql
+          version:
+            postgresql: "16"
+          mode: standalone
+          cluster:
+            instances: 2
+            storage:
+              size: 10Gi
+              storageClass: ssd-hiiops
+            enableSuperuserAccess: true
+            initdb:
+              database: apten-chat-db
+              owner: apten-chat
+            monitoring:
+              enabled: false
+          backups:
+            enabled: true
+            provider: s3
+            endpointURL: "https://s-ed1.cloud.gcore.lu"
+            s3:
+              region: "eu-central"
+              bucket: "apten-chat-cnpg"
+              path: "/"
+            secret:
+              create: false
+              name: cnpg-s3-backup-credentials
+            retentionPolicy: "30d"
+            scheduledBackups:
+              - name: daily-backup
+                schedule: "0 0 0 * * *"
+                backupOwnerReference: self
+                method: barmanObjectStore
+            wal:
+              compression: gzip
+              encryption: AES256
+            data:
+              compression: gzip
+              encryption: AES256
+  project: xavier
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+      - ServerSideApply=true
