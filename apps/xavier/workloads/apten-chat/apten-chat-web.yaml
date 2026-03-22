@@ -10,7 +10,7 @@ spec:
   sources:
     - repoURL: 'registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/charts'
       chart: apten-chat-web
-      targetRevision: 0.0.5
+      targetRevision: 0.0.6
       helm:
         valueFiles:
           - $values/static/xavier/apten-chat/values-apten-chat-web.yaml
