@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: envoy-gateway-external
+  namespace: argocd
+spec:
+  destination:
+    namespace: 'envoy-gateway-system'
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - repoURL: 'ghcr.io/dipa-ai/charts'
+      targetRevision: v0.1.2
+      chart: envoy-gateway
+      helm:
+        valuesObject:
+          gateway:
+            annotations:
+              cert-manager.io/cluster-issuer: letsencrypt-prod
+            listeners:
+              - name: http
+                protocol: HTTP
+                port: 80
+                allowedRoutes:
+                  namespaces:
+                    from: All
+              - name: https
+                protocol: HTTPS
+                port: 443
+                allowedRoutes:
+                  namespaces:
+                    from: All
+                tls:
+                  certificateRefs:
+                    - group: ""
+                      kind: Secret
+                      name: xavier-tls
+                  mode: Terminate
+  project: xavier
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true

@@ -19,6 +19,9 @@ spec:
             enabled: false
           crds:
             enabled: true
+    - repoURL: 'https://github.com/apten-fors/infra.git'
+      targetRevision: HEAD
+      path: static/xavier/cert
   project: xavier
   syncPolicy:
     automated:
