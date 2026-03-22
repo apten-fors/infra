@@ -2,7 +2,7 @@ nameOverride: aptenbot
 replicaCount: 0
 image:
   repository: registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/aptenbot
-  tag: "v0.8.1"
+  tag: "v0.9.0"
   pullPolicy: IfNotPresent
 
 imagePullSecrets:
@@ -23,7 +23,7 @@ envFromSecrets:
 
 configMap:
   data:
-    system_prompt: |
+    SYSTEM_PROMPT: |
       <instructions>
       - ALWAYS follow <answering_rules> and <self_reflection>
 
