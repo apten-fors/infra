@@ -2,7 +2,7 @@ nameOverride: aptenbot-vip
 replicaCount: 1
 image:
   repository: registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/aptenbot
-  tag: "v0.9.0"
+  tag: "v0.10.0"
   pullPolicy: IfNotPresent
 
 imagePullSecrets:
@@ -10,6 +10,7 @@ imagePullSecrets:
 
 env:
   OPENAI_MODEL: "gpt-5.4"
+  OPENAI_REASONING_EFFORT: "medium"
   OPENAI_ALLOWED_MODELS: "gpt-5.4, gpt-5.4-mini, gpt-5.4-nano, gpt-5.2, gpt-5.1"
   ANTHROPIC_MODEL: "claude-opus-4-6"
   ANTHROPIC_ALLOWED_MODELS: "claude-opus-4-6, claude-sonnet-4-6, claude-haiku-4-5"
