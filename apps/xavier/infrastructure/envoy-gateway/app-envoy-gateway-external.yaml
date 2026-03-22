@@ -36,6 +36,19 @@ spec:
                       kind: Secret
                       name: xavier-tls
                   mode: Terminate
+              - name: https-chat
+                hostname: "chat.apten.im"
+                protocol: HTTPS
+                port: 443
+                allowedRoutes:
+                  namespaces:
+                    from: All
+                tls:
+                  certificateRefs:
+                    - group: ""
+                      kind: Secret
+                      name: chat-apten-im-tls
+                  mode: Terminate
   project: xavier
   syncPolicy:
     automated:

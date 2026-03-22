@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apten-chat-server
+  namespace: argocd
+spec:
+  destination:
+    namespace: 'apten-chat'
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - repoURL: 'registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/charts'
+      chart: apten-chat-server
+      targetRevision: 0.1.3
+      helm:
+        valueFiles:
+          - $values/static/xavier/apten-chat/values-apten-chat-server.yaml
+    - repoURL: 'https://github.com/apten-fors/infra.git'
+      targetRevision: HEAD
+      ref: values
+    - repoURL: 'https://github.com/apten-fors/infra.git'
+      targetRevision: HEAD
+      path: secrets/xavier/apten-chat/
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

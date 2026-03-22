@@ -1,0 +1,29 @@
+image:
+  repository: registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/apten-chat-server
+  tag: "v0.0.1"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: gcore-registry-secret
+
+service:
+  port: 80
+  targetPort: 8080
+
+secrets:
+  - apten-chat-server-secret
+
+config:
+  SERVER_PORT: "8080"
+  JWT_ACCESS_TTL: "15m"
+  JWT_REFRESH_TTL: "720h"
+  FILE_MAX_SIZE: "52428800"
+  INVITE_TTL: "168h"
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi

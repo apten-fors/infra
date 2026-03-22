@@ -1,0 +1,27 @@
+image:
+  repository: registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/apten-chat-web
+  tag: "v0.0.1"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: gcore-registry-secret
+
+httpRoute:
+  enabled: true
+  parentRefs:
+    - name: envoy-gateway-external
+      namespace: envoy-gateway-system
+  hostnames:
+    - chat.apten.im
+  backendService:
+    name: apten-chat-server
+    port: 80
+
+# Resources
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
