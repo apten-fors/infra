@@ -24,6 +24,7 @@ spec:
                   namespaces:
                     from: All
               - name: https
+                hostname: "tshawytscha.ai"
                 protocol: HTTPS
                 port: 443
                 allowedRoutes:
