@@ -13,7 +13,7 @@ service:
 httpRoute:
   enabled: true
   parentRefs:
-    - name: envoy-gateway
+    - name: envoy-gateway-external
       namespace: envoy-gateway-system
   hostnames:
     - tshawytscha.ai
