@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   sources:
     - repoURL: 'ghcr.io/dipa-ai/charts'
-      targetRevision: v0.1.2
+      targetRevision: 0.1.2
       chart: envoy-gateway
       helm:
         valuesObject:
