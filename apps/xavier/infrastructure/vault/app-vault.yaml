@@ -11,7 +11,7 @@ spec:
     repoURL: 'https://github.com/apten-fors/infra.git'
     targetRevision: HEAD
     path: static/vault
-  project: default
+  project: xavier
   syncPolicy:
     automated:
       prune: false
