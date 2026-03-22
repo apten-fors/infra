@@ -51,6 +51,9 @@ spec:
             data:
               compression: gzip
               encryption: AES256
+    - repoURL: 'https://github.com/apten-fors/infra.git'
+      targetRevision: HEAD
+      path: secrets/xavier/cnpg-cluster/
   project: xavier
   syncPolicy:
     automated:
