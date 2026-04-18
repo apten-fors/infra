@@ -1,6 +1,6 @@
 image:
   repository: registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/apten-chat-server
-  tag: "v0.0.3"
+  tag: "v0.1.0"
   pullPolicy: IfNotPresent
 
 imagePullSecrets:
