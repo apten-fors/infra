@@ -10,7 +10,7 @@ spec:
   sources:
     - repoURL: 'https://github.com/apten-fors/apten-claw.git'
       targetRevision: HEAD
-      path: k8s/
+      path: .
     - repoURL: 'https://github.com/apten-fors/infra.git'
       targetRevision: HEAD
       path: secrets/xavier/apten-claw/
