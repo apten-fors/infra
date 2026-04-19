@@ -49,6 +49,19 @@ spec:
                       kind: Secret
                       name: chat-apten-im-tls
                   mode: Terminate
+              - name: https-apten-claw
+                hostname: "apten-claw.apten.im"
+                protocol: HTTPS
+                port: 443
+                allowedRoutes:
+                  namespaces:
+                    from: All
+                tls:
+                  certificateRefs:
+                    - group: ""
+                      kind: Secret
+                      name: apten-claw-apten-im-tls
+                  mode: Terminate
   project: xavier
   syncPolicy:
     automated:

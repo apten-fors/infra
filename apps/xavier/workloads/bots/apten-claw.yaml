@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apten-claw
+  namespace: argocd
+spec:
+  destination:
+    namespace: 'apten-claw'
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - repoURL: 'https://github.com/apten-fors/apten-claw.git'
+      targetRevision: HEAD
+      path: k8s/
+    - repoURL: 'https://github.com/apten-fors/infra.git'
+      targetRevision: HEAD
+      path: secrets/xavier/apten-claw/
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
