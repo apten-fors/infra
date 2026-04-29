@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   sources:
     - repoURL: 'ghcr.io/openclaw-rocks/charts'
-      targetRevision: 0.28.0
+      targetRevision: 0.30.0
       chart: openclaw-operator
   project: xavier
   syncPolicy:
