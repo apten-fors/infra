@@ -14,10 +14,12 @@ env:
   OPENAI_ALLOWED_MODELS: "gpt-5.4-mini, gpt-5.4-nano, gpt-5.2"
   ANTHROPIC_MODEL: "claude-haiku-4-5"
   ANTHROPIC_ALLOWED_MODELS: "claude-sonnet-4-6, claude-haiku-4-5"
-  DEFAULT_MODEL_PROVIDER: "openai"
+  DEFAULT_MODEL_PROVIDER: "kimi"
   LOG_LEVEL: "debug"
   REDIS_URL: "redis://dragonfly.aptenbot.svc.cluster.local:6379"
   TG_GUEST_ACCESS_MODE: public
+  CUSTOM_PROVIDERS: "kimi"
+  KIMI_MODELS: "moonshotai/Kimi-K2.6"
 
 envFromSecrets:
   - tgbot-secret-channel
