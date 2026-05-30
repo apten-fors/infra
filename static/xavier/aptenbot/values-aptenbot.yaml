@@ -20,7 +20,8 @@ env:
   TG_GUEST_ACCESS_MODE: public
   CUSTOM_PROVIDERS: "kimi"
   KIMI_MODELS: "moonshotai/Kimi-K2.6"
-  TG_GUEST_TIMEOUT_SECONDS: "300"
+  TG_GUEST_TIMEOUT_SECONDS: "60"
+  GUEST_DISABLE_THINKING: "true"
 
 envFromSecrets:
   - tgbot-secret-channel
