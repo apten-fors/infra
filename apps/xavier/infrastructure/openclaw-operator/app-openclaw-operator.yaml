@@ -8,8 +8,8 @@ spec:
     namespace: 'openclaw-operator'
     server: 'https://kubernetes.default.svc'
   sources:
-    - repoURL: 'ghcr.io/openclaw-rocks/charts'
-      targetRevision: 0.30.0
+    - repoURL: 'ghcr.io/paperclipinc/charts'
+      targetRevision: 0.34.5
       chart: openclaw-operator
   project: xavier
   syncPolicy:
