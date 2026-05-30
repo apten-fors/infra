@@ -14,6 +14,9 @@ spec:
       helm:
         valueFiles:
           - $values/static/xavier/aptenbot/values-aptenbot.yaml
+        valuesObject:
+          image:
+            tag: "v1.0.0"
     - repoURL: 'https://github.com/apten-fors/infra.git'
       targetRevision: HEAD
       ref: values
