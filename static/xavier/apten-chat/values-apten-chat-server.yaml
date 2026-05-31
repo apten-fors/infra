@@ -19,6 +19,7 @@ config:
   JWT_REFRESH_TTL: "720h"
   FILE_MAX_SIZE: "52428800"
   INVITE_TTL: "168h"
+  WS_ALLOWED_ORIGINS: "https://chat.apten.im"
 
 resources:
   limits:
