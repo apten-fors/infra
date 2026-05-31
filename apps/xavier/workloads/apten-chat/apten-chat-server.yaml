@@ -10,10 +10,13 @@ spec:
   sources:
     - repoURL: 'registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/charts'
       chart: apten-chat-server
-      targetRevision: 0.1.0
+      targetRevision: 1.0.0
       helm:
         valueFiles:
           - $values/static/xavier/apten-chat/values-apten-chat-server.yaml
+        valuesObject:
+          image:
+            tag: "v1.0.0"
     - repoURL: 'https://github.com/apten-fors/infra.git'
       targetRevision: HEAD
       ref: values
