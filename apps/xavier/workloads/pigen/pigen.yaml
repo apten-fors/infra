@@ -32,7 +32,7 @@ spec:
             patch: |-
               - op: replace
                 path: /spec/hostnames
-                value: ['pigen.dipa.ai']
+                value: ['pigen.apten.im']
               - op: replace
                 path: /spec/parentRefs/0/name
                 value: envoy-gateway-external
