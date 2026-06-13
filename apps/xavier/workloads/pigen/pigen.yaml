@@ -1,0 +1,52 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pigen
+  namespace: argocd
+spec:
+  destination:
+    namespace: pigen
+    server: 'https://kubernetes.default.svc'
+  project: default
+  sources:
+    - repoURL: 'https://github.com/dipa-ai/pigen.git'
+      targetRevision: HEAD
+      path: kubernetes/
+      kustomize:
+        images:
+          - 'ghcr.io/dipa-ai/pigen:v1.0.0'
+        patches:
+          - target:
+              group: gateway.networking.k8s.io
+              version: v1
+              kind: HTTPRoute
+              name: pigen
+            patch: |-
+              - op: replace
+                path: /spec/hostnames
+                value: ['pigen.dipa.ai']
+              - op: replace
+                path: /spec/parentRefs/0/name
+                value: envoy-gateway-external
+              - op: replace
+                path: /spec/parentRefs/0/sectionName
+                value: https-pigen
+          - target:
+              group: gateway.networking.k8s.io
+              version: v1alpha2
+              kind: TCPRoute
+              name: pigen-pi
+            patch: |-
+              - op: replace
+                path: /spec/parentRefs/0/name
+                value: envoy-gateway-external
+              - op: replace
+                path: /spec/parentRefs/0/sectionName
+                value: pigen-tcp
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
