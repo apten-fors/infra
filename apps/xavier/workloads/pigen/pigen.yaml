@@ -17,6 +17,14 @@ spec:
           - 'registry.luxembourg-2.cloud.gcore.dev/59508-197526-76-infra/pigen:v1.0.0'
         patches:
           - target:
+              kind: Deployment
+              name: pigen
+            patch: |-
+              - op: add
+                path: /spec/template/spec/imagePullSecrets
+                value:
+                  - name: gcore-registry-secret
+          - target:
               group: gateway.networking.k8s.io
               version: v1
               kind: HTTPRoute
