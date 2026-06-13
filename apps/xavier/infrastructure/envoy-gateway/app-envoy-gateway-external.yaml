@@ -62,6 +62,25 @@ spec:
                       kind: Secret
                       name: apten-claw-apten-im-tls
                   mode: Terminate
+              - name: https-pigen
+                hostname: "pigen.apten.im"
+                protocol: HTTPS
+                port: 443
+                allowedRoutes:
+                  namespaces:
+                    from: All
+                tls:
+                  certificateRefs:
+                    - group: ""
+                      kind: Secret
+                      name: pigen-apten-im-tls
+                  mode: Terminate
+              - name: pigen-tcp
+                protocol: TCP
+                port: 31415
+                allowedRoutes:
+                  namespaces:
+                    from: All
   project: xavier
   syncPolicy:
     automated:
