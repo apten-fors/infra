@@ -39,6 +39,9 @@ spec:
               - op: replace
                 path: /spec/parentRefs/0/sectionName
                 value: https-pigen
+              - op: add
+                path: /spec/parentRefs/0/namespace
+                value: envoy-gateway-system
           - target:
               group: gateway.networking.k8s.io
               version: v1alpha2
@@ -51,6 +54,9 @@ spec:
               - op: replace
                 path: /spec/parentRefs/0/sectionName
                 value: pigen-tcp
+              - op: add
+                path: /spec/parentRefs/0/namespace
+                value: envoy-gateway-system
   syncPolicy:
     automated:
       prune: false
