@@ -9,17 +9,17 @@ imagePullSecrets:
   - name: gcore-registry-secret
 
 env:
-  OPENAI_MODEL: "gpt-5.4-mini"
+  OPENAI_MODEL: "gpt-5.6-luna"
   OPENAI_REASONING_EFFORT: "low"
-  OPENAI_ALLOWED_MODELS: "gpt-5.4-mini, gpt-5.4-nano, gpt-5.2"
+  OPENAI_ALLOWED_MODELS: "gpt-5.6-terra, gpt-5.6-luna"
   ANTHROPIC_MODEL: "claude-haiku-4-5"
-  ANTHROPIC_ALLOWED_MODELS: "claude-sonnet-4-6, claude-haiku-4-5"
-  DEFAULT_MODEL_PROVIDER: "kimi"
+  ANTHROPIC_ALLOWED_MODELS: "claude-sonnet-5, claude-haiku-4-5"
+  DEFAULT_MODEL_PROVIDER: "deepseek"
   LOG_LEVEL: "debug"
   REDIS_URL: "redis://dragonfly.aptenbot.svc.cluster.local:6379"
   TG_GUEST_ACCESS_MODE: public
-  CUSTOM_PROVIDERS: "kimi"
-  KIMI_MODELS: "moonshotai/Kimi-K2.6"
+  CUSTOM_PROVIDERS: "deepseek"
+  KIMI_MODELS: "deepseek-ai/DeepSeek-V4-Flash"
   TG_GUEST_TIMEOUT_SECONDS: "60"
   GUEST_DISABLE_THINKING: "true"
 
